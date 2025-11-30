@@ -10,8 +10,13 @@ jobs:
     uses: tty-pt/ci/.github/workflows/all-in-one.yml@main
     with:
       name: libqhnsw
-      deps: "libgflags-dev"
-      publish_to: "deb"
+      deps: "libopenblas-dev,libgflags-dev,cmake,gcc-12,g++-12"
+      deps_apk: "openblas-dev,gflags-dev,cmake,gcc-12,g++-12"
+      deps_pacman: "openblas,gflags,cmake,gcc-12,g++-12"
+      deps_rpm: "openblas-devel,gflags-devel,cmake,gcc-12,g++-12"
+      deps_brew: "openblas,gflags,cmake,gcc-12,g++-12"
+      deps_openbsd: "openblas,gflags,cmake,gcc-12,g++-12"
+      publish_to: "deb,apk,pacman,rpm,brew,openbsd"
     secrets:
       HOST: ${{ secrets.OPENBSD_HOST }}
       USER: ${{ secrets.OPENBSD_USER }}
