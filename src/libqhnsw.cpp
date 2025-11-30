@@ -1,3 +1,4 @@
+#include "./../include/ttypt/qhnsw.h"
 #include <faiss/IndexHNSW.h>
 
 extern "C" {
@@ -14,7 +15,7 @@ void qhnsw_add(void *idx, int n, const float *vecs)
 }
 
 void qhnsw_search(void *idx, int n, const float *query, int k,
-		 float *dist, long *labels)
+		 float *dist, qhnsw_idx_t *labels)
 {
 	static_cast<faiss::IndexHNSWFlat*>(idx)->search(n, query, k, dist, labels);
 }
